@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Access — Night Raid</title>
+    <style>
+        body { background: #07090e; color: #fff; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .login-box { background: #121826; padding: 30px; border-radius: 12px; border: 1px solid #1f293d; width: 320px; text-align: center; }
+        h2 { color: #ef4444; margin-bottom: 20px; }
+        input { width: 100%; padding: 10px; margin-bottom: 15px; background: #000; border: 1px solid #333; color: #fff; border-radius: 6px; box-sizing: border-box; text-align: center; }
+        button { width: 100%; padding: 10px; background: #ef4444; color: #fff; border: none; font-weight: bold; border-radius: 6px; cursor: pointer; }
+        button:hover { background: #dc2626; }
+        .alert { background: rgba(239,68,68,0.2); color: #fca5a5; padding: 8px; border-radius: 4px; font-size: 0.85rem; margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <h2>⚡ ADMIN LOGIN</h2>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for m in messages %}<div class="alert">{{ m }}</div>{% endfor %}
+          {% endif %}
+        {% endwith %}
+        <form action="{{ url_for('admin_login') }}" method="POST">
+            <input type="password" name="password" placeholder="Enter Passcode (2009)" required autofocus>
+            <button type="submit">Unlock Panel</button>
+        </form>
+    </div>
+</body>
+</html>

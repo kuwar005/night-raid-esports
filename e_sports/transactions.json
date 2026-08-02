@@ -1,0 +1,95 @@
+{
+    "balances": {
+        "Gamer1": 7020
+    },
+    "transactions": [
+        {
+            "id": "txn_1785652475",
+            "username": "Gamer1",
+            "type": "DEBIT",
+            "amount": 50,
+            "status": "SUCCESS",
+            "timestamp": "2026-08-02 12:04:35"
+        },
+        {
+            "id": "txn_1785652482",
+            "username": "Gamer1",
+            "type": "DEBIT",
+            "amount": 30,
+            "status": "SUCCESS",
+            "timestamp": "2026-08-02 12:04:42"
+        },
+        {
+            "id": "txn_1785652527",
+            "username": "Gamer1",
+            "type": "CREDIT",
+            "amount": 100,
+            "status": "SUCCESS",
+            "timestamp": "2026-08-02 12:05:27"
+        },
+        {
+            "id": "txn_1785652544",
+            "username": "Gamer1",
+            "type": "CREDIT",
+            "amount": 1000,
+            "status": "SUCCESS",
+            "timestamp": "2026-08-02 12:05:44"
+        },
+        {
+            "id": "txn_1785652548",
+            "username": "Gamer1",
+            "type": "DEBIT",
+            "amount": 500,
+            "status": "SUCCESS",
+            "timestamp": "2026-08-02 12:05:48"
+        },
+        {
+            "id": "txn_1785652552",
+            "username": "Gamer1",
+            "type": "CREDIT",
+            "amount": 1000,
+            "status": "SUCCESS",
+            "timestamp": "2026-08-02 12:05:52"
+        },
+        {
+            "id": "txn_1785652557",
+            "username": "Gamer1",
+            "type": "CREDIT",
+            "amount": 1000,
+            "status": "SUCCESS",
+            "timestamp": "2026-08-02 12:05:57"
+        },
+        {
+            "id": "txn_1785652560",
+            "username": "Gamer1",
+            "type": "CREDIT",
+            "amount": 1000,
+            "status": "SUCCESS",
+            "timestamp": "2026-08-02 12:06:00"
+        },
+        {
+            "id": "txn_1785652563",
+            "username": "Gamer1",
+            "type": "CREDIT",
+            "amount": 1000,
+            "status": "SUCCESS",
+            "timestamp": "2026-08-02 12:06:03"
+        },
+        {
+            "id": "txn_1785652566",
+            "username": "Gamer1",
+            "type": "CREDIT",
+            "amount": 1000,
+            "status": "SUCCESS",
+            "timestamp": "2026-08-02 12:06:06"
+        },
+        {
+            "id": "txn_1785652578",
+            "username": "Gamer1",
+            "type": "CREDIT",
+            "amount": 1000,
+            "status": "SUCCESS",
+            "timestamp": "2026-08-02 12:06:18"
+        }
+    ]
+}

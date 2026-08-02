@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cash Out — Night Raid Esports</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-main: #06080C;
+            --bg-surface: #0D111A;
+            --accent-cyan: #00F0FF;
+            --accent-green: #00FF87;
+            --accent-red: #FF2E63;
+            --text-primary: #F8FAFC;
+            --text-muted: #8A94A6;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Space Grotesk', sans-serif; }
+        body { background-color: var(--bg-main); color: var(--text-primary); min-height: 100vh; padding-bottom: 60px; }
+        .container { max-width: 600px; margin: 0 auto; padding: 0 20px; }
+
+        header { padding: 20px 0; margin-bottom: 40px; border-bottom: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center; }
+        .brand-logo { font-family: 'Orbitron', sans-serif; font-size: 1.3rem; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        .brand-logo span { color: var(--accent-red); }
+
+        .card { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 16px; padding: 30px; }
+        h2 { font-family: 'Orbitron', sans-serif; font-size: 1.4rem; color: #fff; margin-bottom: 10px; }
+        p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; }
+
+        input { width: 100%; padding: 12px; margin-bottom: 15px; background: var(--bg-main); border: 1px solid var(--border-subtle); color: #fff; border-radius: 8px; font-size: 0.95rem; outline: none; }
+        input:focus { border-color: var(--accent-cyan); }
+
+        .btn-submit { width: 100%; background: linear-gradient(135deg, var(--accent-green), var(--accent-cyan)); color: #06080C; border: none; padding: 12px; font-family: 'Orbitron', sans-serif; font-weight: 800; border-radius: 8px; cursor: pointer; }
+        .alert-banner { padding: 12px; background: rgba(0, 255, 135, 0.1); border: 1px solid var(--accent-green); color: var(--accent-green); border-radius: 8px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <a href="{{ url_for('index') }}" class="brand-logo"><i class="fa-solid fa-crosshairs"></i> NIGHT <span>RAID</span></a>
+            <a href="{{ url_for('index') }}" style="color: var(--accent-cyan); text-decoration: none; font-weight: bold;"><i class="fa-solid fa-arrow-left"></i> Back</a>
+        </header>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for cat, msg in messages %}
+              <div class="alert-banner"><i class="fa-solid fa-circle-check"></i> {{ msg }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <div class="card">
+            <h2><i class="fa-solid fa-wallet" style="color: var(--accent-green);"></i> Request Cash Out</h2>
+            <p>Convert your Mana Points back to real money directly into your UPI account.</p>
+
+            <form action="{{ url_for('withdraw') }}" method="POST">
+                <label style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 6px;">Your UPI Address</label>
+                <input type="text" name="upi_id" placeholder="e.g. username@paytm or 9876543210@upi" required>
+
+                <label style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 6px;">Withdrawal Amount (₹)</label>
+                <input type="number" name="amount" placeholder="e.g. 500" required>
+
+                <button type="submit" class="btn-submit">Submit Withdrawal Request</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

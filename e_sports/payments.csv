@@ -1,0 +1,54 @@
+import json
+import os
+
+TRANSACTIONS_FILE = 'transactions.json'
+
+def load_transactions():
+    """Load transaction history and balances from JSON file."""
+    if os.path.exists(TRANSACTIONS_FILE):
+        try:
+            with open(TRANSACTIONS_FILE, 'r') as f:
+                return json.load(f)
+        except Exception:
+            return {}
+    return {}
+
+def save_transactions(data):
+    """Save transaction data back to JSON file."""
+    with open(TRANSACTIONS_FILE, 'w') as f:
+        json.dump(data, f, indent=4)
+
+def check_balance(*args, **kwargs):
+    """
+    Safely accepts 1 or 2 arguments to prevent signature mismatch errors.
+    """
+    # Extract username from first positional argument if provided
+    username = args[0] if len(args) > 0 else kwargs.get('username', 'Gamer1')
+    
+    transactions = load_transactions()
+    user_data = transactions.get(str(username), {'balance': 100})
+    return user_data.get('balance', 100)
+
+def add_coins(username, amount):
+    """Adds coins/mana points to user balance."""
+    transactions = load_transactions()
+    user_data = transactions.get(str(username), {'balance': 100, 'history': []})
+    user_data['balance'] += int(amount)
+    transactions[str(username)] = user_data
+    save_transactions(transactions)
+    return user_data['balance']
+
+def deduct_coins(username, amount):
+    """Deducts entry fee from user balance if available."""
+    transactions = load_transactions()
+    user_data = transactions.get(str(username), {'balance': 100, 'history': []})
+    if user_data['balance'] >= int(amount):
+        user_data['balance'] -= int(amount)
+        transactions[str(username)] = user_data
+        save_transactions(transactions)
+        return True
+    return False
+
+def log_transaction(username, action, amount):
+    """Logs payment transactions."""
+    pass

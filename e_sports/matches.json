@@ -1,0 +1,13 @@
+[
+    {
+        "id": 1,
+        "match_name": "match ",
+        "game": "bgmi",
+        "fee": 100,
+        "match_time": "today, 9:00pm",
+        "prize_1st": 150,
+        "prize_2nd": 100,
+        "prize_3rd": 50,
+        "players": []
+    }
+]

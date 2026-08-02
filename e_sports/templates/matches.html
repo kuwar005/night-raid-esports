@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Night Raid — Matches</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #07090e; color: white; padding: 20px; }
+        .card { background: rgba(18, 24, 38, 0.8); border: 1px solid #333; padding: 20px; border-radius: 12px; margin-bottom: 15px; }
+        .btn { padding: 10px 15px; background: #00e676; border: none; font-weight: bold; border-radius: 6px; cursor: pointer; color: #000; }
+        .alert-danger { background: rgba(239,68,68,0.2); border: 1px solid #ef4444; color: #fca5a5; padding: 10px; border-radius: 8px; margin-bottom: 10px; }
+        .alert-success { background: rgba(0,230,118,0.2); border: 1px solid #00e676; color: #00e676; padding: 10px; border-radius: 8px; margin-bottom: 10px; }
+        .alert-info { background: rgba(59,130,246,0.2); border: 1px solid #3b82f6; color: #93c5fd; padding: 10px; border-radius: 8px; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Tournaments & Matches</h1>
+    <p>Your Balance: <strong>{{ balance }} MP</strong></p>
+    <hr style="border-color: #333; margin: 15px 0;">
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    {% for match in matches %}
+        {% if match is mapping %}
+        <div class="card">
+            <h2>{{ match.match_name }} <span style="font-size: 0.8rem; color: #aaa;">({{ match.game }})</span></h2>
+            <p>Time: <strong>{{ match.match_time }}</strong></p>
+            <p>Entry Fee: <strong>{{ match.fee }} MP</strong></p>
+            <p>Prizes: 1st: {{ match.prize_1st }} MP | 2nd: {{ match.prize_2nd }} MP | 3rd: {{ match.prize_3rd }} MP</p>
+            <p>Joined Players: {{ match.players|length if match.players else 0 }}</p>
+            
+            <form action="{{ url_for('join_match', match_id=match.id) }}" method="POST" style="margin-top: 10px;">
+                <button type="submit" class="btn">Join Match</button>
+            </form>
+        </div>
+        {% endif %}
+    {% else %}
+        <p style="color: #aaa;">No matches available right now. Check back soon!</p>
+    {% endfor %}
+
+    <a href="{{ url_for('index') }}" style="color: #00e676; text-decoration: none;">← Back to Dashboard</a>
+</body>
+</html>

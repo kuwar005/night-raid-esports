@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Night Raid — Checkout</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background: #07090e; 
+            color: white; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            padding: 20px;
+        }
+        .box { 
+            background: rgba(18, 24, 38, 0.9); 
+            border: 1px solid rgba(0, 230, 118, 0.3); 
+            padding: 30px; 
+            border-radius: 16px; 
+            width: 100%; 
+            max-width: 420px; 
+            text-align: center; 
+            backdrop-filter: blur(10px);
+        }
+        .qr-container {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            display: inline-block;
+            margin: 15px 0;
+            box-shadow: 0 4px 20px rgba(0, 230, 118, 0.2);
+        }
+        .qr-container img {
+            display: block;
+            width: 200px;
+            height: 200px;
+        }
+        .input-field { 
+            width: 100%; 
+            padding: 12px; 
+            margin: 15px 0; 
+            background: #07090e; 
+            border: 1px solid #333; 
+            border-radius: 8px; 
+            color: white; 
+            font-size: 0.95rem;
+            text-align: center;
+        }
+        .input-field:focus {
+            border-color: #00e676;
+            outline: none;
+        }
+        .btn { 
+            width: 100%; 
+            padding: 12px; 
+            background: #00e676; 
+            border: none; 
+            font-weight: 800; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            color: #07090e; 
+            font-size: 1rem;
+            transition: transform 0.2s ease;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        .btn-cancel {
+            display: inline-block;
+            margin-top: 15px;
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .btn-cancel:hover {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>Pay via UPI QR Code</h2>
+        <p style="color: #94a3b8; margin-top: 5px;">
+            Total Payable: <strong style="color: #ffffff;">₹{{ price }}</strong> for <strong style="color: #00e676;">{{ mana_amount }} MP</strong>
+        </p>
+
+        <!-- DYNAMIC QR CODE DISPLAY -->
+        <div class="qr-container">
+            <img src="{{ qr_url }}" alt="Scan to Pay ₹{{ price }}">
+        </div>
+
+        <p style="font-size: 0.85rem; color: #94a3b8;">Scan with Paytm, PhonePe, Google Pay, or any UPI app</p>
+
+        <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px; margin: 15px 0;">
+            <p style="font-size: 0.8rem; color: #aaa;">Manual UPI ID:</p>
+            <p style="font-size: 1rem; font-weight: 800; color: #00e676;">{{ upi_id }}</p>
+        </div>
+
+        <!-- TRANSACTION VERIFICATION FORM -->
+        <form action="{{ url_for('process_mana_purchase') }}" method="POST">
+            <input type="hidden" name="mana_amount" value="{{ mana_amount }}">
+            <input type="text" name="transaction_id" placeholder="Enter 12-digit UPI Transaction ID" class="input-field" required>
+            <button type="submit" class="btn">Submit Transaction ID</button>
+        </form>
+
+        <a href="{{ url_for('buy_mana') }}" class="btn-cancel">← Cancel Payment</a>
+    </div>
+</body>
+</html>

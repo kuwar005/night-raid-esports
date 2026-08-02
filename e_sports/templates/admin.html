@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard — Night Raid Esports</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-main: #06080C;
+            --bg-surface: #0D111A;
+            --bg-surface-elevated: #141A26;
+            --accent-cyan: #00F0FF;
+            --accent-purple: #7000FF;
+            --accent-red: #FF2E63;
+            --accent-green: #00FF87;
+            --text-primary: #F8FAFC;
+            --text-muted: #8A94A6;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Space Grotesk', sans-serif; }
+        body { background: var(--bg-main); color: var(--text-primary); padding: 20px 0; min-height: 100vh; }
+        .container { max-width: 1150px; margin: 0 auto; padding: 0 20px; }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-subtle);
+            margin-bottom: 30px;
+        }
+
+        .brand-logo { font-family: 'Orbitron', sans-serif; font-size: 1.3rem; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        .brand-logo span { color: var(--accent-red); }
+
+        .btn-logout {
+            background: rgba(255, 46, 99, 0.15);
+            color: var(--accent-red);
+            border: 1px solid var(--accent-red);
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .admin-layout { display: grid; grid-template-columns: 360px 1fr; gap: 30px; }
+        @media (max-width: 880px) { .admin-layout { grid-template-columns: 1fr; } }
+
+        .panel-box {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 25px;
+        }
+
+        .panel-box h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            color: #fff;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; display: block; margin-top: 12px; font-weight: 600; }
+
+        input, select {
+            width: 100%;
+            padding: 10px 14px;
+            margin-top: 6px;
+            background: var(--bg-main);
+            border: 1px solid var(--border-subtle);
+            color: #fff;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .btn-publish {
+            width: 100%;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-cyan));
+            color: #fff;
+            border: none;
+            padding: 12px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 800;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .match-row {
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 15px;
+        }
+
+        .match-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+        .match-header h4 { font-family: 'Orbitron', sans-serif; color: #fff; font-size: 1rem; }
+        .match-details { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+
+        .btn-del {
+            background: rgba(255, 46, 99, 0.2);
+            color: var(--accent-red);
+            border: 1px solid var(--accent-red);
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .alert-banner {
+            padding: 12px 18px;
+            background: rgba(0, 255, 135, 0.1);
+            border: 1px solid var(--accent-green);
+            color: var(--accent-green);
+            border-radius: 10px;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <a href="{{ url_for('admin') }}" class="brand-logo">
+                <i class="fa-solid fa-shield-halved"></i> NIGHT <span>RAID ADMIN</span>
+            </a>
+            <a href="{{ url_for('admin_logout') }}" class="btn-logout"><i class="fa-solid fa-power-off"></i> Logout</a>
+        </header>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for cat, msg in messages %}
+              <div class="alert-banner"><i class="fa-solid fa-circle-check"></i> {{ msg }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <div class="admin-layout">
+            <div class="panel-box">
+                <h3><i class="fa-solid fa-plus" style="color:var(--accent-cyan);"></i> Create Match</h3>
+                <form action="{{ url_for('admin') }}" method="POST">
+                    <input type="hidden" name="action" value="create">
+
+                    <label>Tournament Name</label>
+                    <input type="text" name="match_name" placeholder="e.g. Night Raid Duo Championship" required>
+
+                    <label>Game Title</label>
+                    <select name="game">
+                        <option value="BGMI">BGMI</option>
+                        <option value="Free Fire">Free Fire</option>
+                        <option value="COD Mobile">COD Mobile</option>
+                    </select>
+
+                    <label>Entry Fee (MP)</label>
+                    <input type="number" name="fee" placeholder="50" required>
+
+                    <label>1st Prize (₹)</label>
+                    <input type="number" name="prize_1st" placeholder="500" required>
+
+                    <label>Match Schedule</label>
+                    <input type="text" name="match_time" placeholder="Today at 8:00 PM" required>
+
+                    <button type="submit" class="btn-publish">Publish Tournament</button>
+                </form>
+            </div>
+
+            <div>
+                <div class="panel-box">
+                    <h3><i class="fa-solid fa-list-check" style="color:var(--accent-cyan);"></i> Published Matches</h3>
+                    {% if matches %}
+                        {% for match in matches %}
+                        <div class="match-row">
+                            <div class="match-header">
+                                <div>
+                                    <h4>{{ match.match_name }} <span style="font-size:0.75rem; color: var(--accent-green);">({{ match.game }})</span></h4>
+                                    <div class="match-details">
+                                        <span>Fee: <b>{{ match.fee }} MP</b></span> | 
+                                        <span>Prize: <b>₹{{ match.prize_1st }}</b></span> | 
+                                        <span>Registered: <b>{{ (match.players or [])|length }} Squads</b></span>
+                                    </div>
+                                </div>
+                                <form action="{{ url_for('delete_match', match_id=match.id) }}" method="POST">
+                                    <button type="submit" class="btn-del" onclick="return confirm('Delete tournament?')"><i class="fa-solid fa-trash"></i></button>
+                                </form>
+                            </div>
+
+                            <form action="{{ url_for('admin') }}" method="POST" style="display:flex; gap:10px; margin-top:10px;">
+                                <input type="hidden" name="action" value="update_room">
+                                <input type="hidden" name="match_id" value="{{ match.id }}">
+                                <input type="text" name="room_id" value="{{ match.room_id }}" placeholder="Room ID" style="margin:0;">
+                                <input type="text" name="room_pass" value="{{ match.room_pass }}" placeholder="Password" style="margin:0;">
+                                <button type="submit" class="btn-publish" style="margin:0; width:auto; padding:0 18px; white-space:nowrap;">Release Key</button>
+                            </form>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <p style="color: var(--text-muted); text-align: center; padding: 20px 0;">No active matches found.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+[
+    {
+        "username": "Gamer1",
+        "amount_mp": 10,
+        "amount_inr": 10,
+        "payment_method": "Bank Transfer",
+        "payout_details": "8872493054",
+        "status": "Pending"
+    }
+]
