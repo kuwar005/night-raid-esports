@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ player_ign }} Stats — Night Raid Esports</title>
+    <style>
+        body { background: #06080C; color: #fff; font-family: sans-serif; text-align: center; padding: 40px 10px; }
+        .card { background: #0D111A; display: inline-block; padding: 25px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); }
+        img { max-width: 100%; height: auto; border-radius: 8px; margin-top: 15px; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Player Profile: <span style="color:#00F0FF;">{{ player_ign }}</span></h2>
+        <img src="data:image/png;base64,{{ chart_base64 }}" alt="Player Stats Graph">
+    </div>
+</body>
+</html>

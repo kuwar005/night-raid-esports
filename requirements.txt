@@ -1,0 +1,8 @@
+flask
+pandas
+numpy
+matplotlib
+google-auth
+google-auth-oauthlib
+requests
+gunicorn
