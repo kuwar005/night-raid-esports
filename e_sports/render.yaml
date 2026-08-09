@@ -1,6 +1,7 @@
-services
- - type:web
-   name: esports-app
-   env: python
-   buildCommand: pip install -r requirements.txt
-   startCommand: gunicorn app:app
+services:
+  - type: web
+    name: night-raid-esports
+    env: python
+    rootDir: e_sports
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app

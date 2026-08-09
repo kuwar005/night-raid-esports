@@ -1,13 +1,20 @@
 [
     {
-        "id": 1,
-        "match_name": "match ",
-        "game": "bgmi",
-        "fee": 100,
-        "match_time": "today, 9:00pm",
-        "prize_1st": 150,
-        "prize_2nd": 100,
-        "prize_3rd": 50,
-        "players": []
+        "id": "d47d7203",
+        "match_name": "Xhamster",
+        "game": "BGMI",
+        "fee": "10",
+        "prize_1st": "69",
+        "match_time": "today 8:00pm",
+        "room_id": "",
+        "room_pass": "",
+        "status": "UPCOMING",
+        "players": [
+            {
+                "ign": "Kuwar005",
+                "note": "johnny's father",
+                "registered_at": "2026-08-09 13:59"
+            }
+        ]
     }
 ]

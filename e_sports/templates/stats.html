@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ player_ign }} Stats — Night Raid Esports</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: #06080C; color: #fff; font-family: 'Space Grotesk', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; text-align: center; }
+        .card { background: #0D111A; padding: 30px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08); width: 100%; max-width: 650px; }
+        h2 { font-family: 'Orbitron', sans-serif; color: #FFF; margin-bottom: 10px; font-size: 1.3rem; }
+        .player-name { color: #00F0FF; }
+        p { color: #888; font-size: 0.9rem; margin-bottom: 20px; }
+        img { max-width: 100%; height: auto; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); }
+        .back-btn { display: inline-block; margin-top: 25px; color: #FF2E63; text-decoration: none; font-family: 'Orbitron', sans-serif; font-size: 0.85rem; font-weight: bold; }
+        .back-btn:hover { color: #FFF; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Player Profile: <span class="player-name">{{ player_ign }}</span></h2>
+        <p>Tournaments Joined: <strong style="color:#FFF;">{{ matches_joined }}</strong></p>
+        
+        <img src="data:image/png;base64,{{ chart_base64 }}" alt="Player Performance Chart">
+        
+        <br>
+        <a href="/" class="back-btn">← RETURN TO HOME</a>
+    </div>
+</body>
+</html>

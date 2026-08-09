@@ -3,679 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Night Raid Esports — Professional Gaming Platform</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <title>Night Raid Esports — Arena</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-main: #06080C;
-            --bg-surface: #0D111A;
-            --bg-surface-elevated: #141A26;
-            --accent-cyan: #00F0FF;
-            --accent-purple: #7000FF;
-            --accent-red: #FF2E63;
-            --accent-gold: #FFB800;
-            --accent-green: #00FF87;
-            --text-primary: #F8FAFC;
-            --text-muted: #8A94A6;
-            --border-subtle: rgba(255, 255, 255, 0.08);
-            --border-glow: rgba(0, 240, 255, 0.25);
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Space Grotesk', sans-serif; }
-
-        body {
-            background-color: var(--bg-main);
-            color: var(--text-primary);
-            min-height: 100vh;
-            background-image: 
-                radial-gradient(circle at 10% 0%, rgba(112, 0, 255, 0.12) 0%, transparent 40%),
-                radial-gradient(circle at 90% 100%, rgba(0, 240, 255, 0.08) 0%, transparent 40%);
-            background-attachment: fixed;
-            padding-bottom: 60px;
-        }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 90;
-            background: rgba(6, 8, 12, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-subtle);
-            padding: 16px 0;
-            margin-bottom: 30px;
-        }
-
-        .nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
-
-        .brand-logo {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 900;
-            color: #fff;
-            text-decoration: none;
-            letter-spacing: 2px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .brand-logo i { color: var(--accent-cyan); filter: drop-shadow(0 0 8px var(--accent-cyan)); }
-        .brand-logo span { color: var(--accent-red); }
-
-        nav.nav-links { display: flex; gap: 28px; align-items: center; }
-        nav.nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-        }
-
-        nav.nav-links a:hover, nav.nav-links a.active {
-            color: var(--accent-cyan);
-            text-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
-        }
-
-        .header-actions { display: flex; align-items: center; gap: 15px; }
-
-        .wallet-capsule {
-            background: rgba(112, 0, 255, 0.15);
-            border: 1px solid var(--accent-purple);
-            padding: 8px 16px;
-            border-radius: 30px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.9rem;
-            font-weight: 700;
-        }
-
-        .wallet-capsule i { color: var(--accent-gold); }
-
-        .btn-topup {
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-cyan));
-            color: #fff;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 240, 255, 0.2);
-        }
-
-        .btn-topup:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 240, 255, 0.4); }
-
-        .hero-spotlight {
-            background: linear-gradient(135deg, rgba(13, 17, 26, 0.9), rgba(20, 26, 38, 0.6)), url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80');
-            background-size: cover;
-            background-position: center;
-            border: 1px solid var(--border-subtle);
-            border-radius: 20px;
-            padding: 40px;
-            margin-bottom: 35px;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .hero-spotlight::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(90deg, #06080C 30%, transparent 100%);
-        }
-
-        .hero-content { position: relative; z-index: 2; max-width: 600px; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: #04060A; color: #FFFFFF; font-family: 'Rajdhani', sans-serif; min-height: 100vh; padding: 20px; background-image: radial-gradient(circle at 50% 0%, #0A1224 0%, #04060A 75%); }
         
-        .hero-badge {
-            background: rgba(255, 46, 99, 0.2);
-            border: 1px solid var(--accent-red);
-            color: var(--accent-red);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            display: inline-block;
-            margin-bottom: 15px;
-        }
+        .navbar { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto 30px; padding: 15px 25px; background: rgba(8, 12, 20, 0.8); border-radius: 12px; border: 1px solid rgba(0, 240, 255, 0.2); backdrop-filter: blur(10px); flex-wrap: wrap; gap: 15px; box-shadow: 0 0 20px rgba(0,240,255,0.1); }
+        .logo { font-family: 'Orbitron', sans-serif; font-size: 1.6rem; font-weight: 900; color: #00F0FF; text-decoration: none; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 10px rgba(0,240,255,0.5); }
+        .logo span { color: #FF2E63; }
+        .nav-right { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+        
+        .mp-badge { background: rgba(0, 240, 255, 0.1); padding: 8px 18px; border-radius: 20px; border: 1px solid #00F0FF; color: #00F0FF; font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 0.85rem; text-shadow: 0 0 8px rgba(0,240,255,0.5); }
+        .user-pill { background: rgba(255, 46, 99, 0.1); border: 1px solid #FF2E63; color: #FFF; padding: 6px 14px; border-radius: 20px; font-weight: bold; font-size: 0.9rem; }
+        
+        .nav-link { color: #AAA; text-decoration: none; font-family: 'Orbitron', sans-serif; font-size: 0.85rem; font-weight: 600; transition: 0.2s; }
+        .nav-link:hover { color: #00F0FF; }
 
-        .hero-content h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.2rem;
-            font-weight: 900;
-            line-height: 1.2;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-        }
+        .container { max-width: 1100px; margin: 0 auto; }
+        
+        .flash-msg { padding: 12px 20px; border-radius: 8px; margin-bottom: 25px; font-weight: 700; text-align: center; font-family: 'Orbitron', sans-serif; font-size: 0.9rem; }
+        .flash-success { background: rgba(0, 240, 255, 0.15); border: 1px solid #00F0FF; color: #00F0FF; box-shadow: 0 0 15px rgba(0,240,255,0.2); }
+        .flash-error { background: rgba(255, 46, 99, 0.15); border: 1px solid #FF2E63; color: #FF2E63; box-shadow: 0 0 15px rgba(255,46,99,0.2); }
 
-        .hero-content p { color: var(--text-muted); font-size: 1rem; margin-bottom: 25px; line-height: 1.5; }
+        .login-bar { background: #080C14; border: 1px solid rgba(255,255,255,0.08); padding: 15px 20px; border-radius: 12px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+        .login-bar form { display: flex; gap: 10px; width: 100%; max-width: 400px; }
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 18px;
-            margin-bottom: 35px;
-        }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px; }
+        .card { background: #080C14; border-radius: 16px; padding: 22px; border: 1px solid rgba(255,255,255,0.08); display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s; position: relative; overflow: hidden; }
+        .card:hover { border-color: #00F0FF; box-shadow: 0 0 25px rgba(0,240,255,0.2); transform: translateY(-3px); }
+        
+        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .card-title { font-family: 'Orbitron', sans-serif; font-size: 1.2rem; font-weight: 800; color: #FFF; letter-spacing: 1px; }
+        
+        .badge { font-family: 'Orbitron', sans-serif; font-size: 0.7rem; font-weight: 800; padding: 4px 10px; border-radius: 6px; letter-spacing: 1px; }
+        .badge-upcoming { background: rgba(0, 240, 255, 0.15); color: #00F0FF; border: 1px solid #00F0FF; }
+        .badge-ended { background: rgba(255, 46, 99, 0.15); color: #FF2E63; border: 1px solid #FF2E63; }
 
-        .stat-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-subtle);
-            border-radius: 14px;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
+        .details { margin: 15px 0; font-size: 1rem; color: #BBB; line-height: 1.8; }
+        .details span { color: #00F0FF; font-weight: 700; }
 
-        .stat-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            background: rgba(0, 240, 255, 0.1);
-            border: 1px solid var(--border-glow);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.2rem;
-            color: var(--accent-cyan);
-        }
+        .room-box { background: #04060A; padding: 12px; border-radius: 10px; border: 1px dashed #00F0FF; margin: 15px 0; text-align: center; }
+        .room-title { color: #00F0FF; font-family: 'Orbitron', sans-serif; font-size: 0.75rem; font-weight: 800; margin-bottom: 5px; }
 
-        .stat-info h4 { font-family: 'Orbitron', sans-serif; font-size: 1.3rem; color: #fff; }
-        .stat-info p { font-size: 0.85rem; color: var(--text-muted); }
+        input[type="text"] { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: #04060A; color: #FFF; margin-bottom: 10px; outline: none; font-family: 'Rajdhani', sans-serif; font-size: 1rem; }
+        input[type="text"]:focus { border-color: #00F0FF; box-shadow: 0 0 10px rgba(0,240,255,0.3); }
 
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .section-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .section-title i { color: var(--accent-cyan); }
-
-        .filter-pills { display: flex; gap: 10px; }
-        .pill {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-subtle);
-            color: var(--text-muted);
-            padding: 8px 18px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.3s ease;
-        }
-
-        .pill:hover, .pill.active {
-            background: var(--accent-purple);
-            color: #fff;
-            border-color: var(--accent-purple);
-            box-shadow: 0 4px 12px rgba(112, 0, 255, 0.3);
-        }
-
-        .tournament-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 24px;
-        }
-
-        .tournament-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-subtle);
-            border-radius: 16px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: all 0.3s ease;
-        }
-
-        .tournament-card:hover {
-            transform: translateY(-6px);
-            border-color: var(--border-glow);
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
-        }
-
-        .card-banner {
-            height: 120px;
-            background: linear-gradient(180deg, rgba(0,0,0,0.2), var(--bg-surface)), url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=600&q=80');
-            background-size: cover;
-            padding: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-
-        .game-tag {
-            background: rgba(6, 8, 12, 0.8);
-            border: 1px solid var(--accent-cyan);
-            color: var(--accent-cyan);
-            padding: 4px 12px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            font-family: 'Orbitron', sans-serif;
-        }
-
-        .live-tag {
-            background: rgba(0, 255, 135, 0.15);
-            border: 1px solid var(--accent-green);
-            color: var(--accent-green);
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .card-body { padding: 20px; }
-        .card-body h3 { font-family: 'Orbitron', sans-serif; font-size: 1.15rem; color: #fff; margin-bottom: 15px; }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            background: var(--bg-surface-elevated);
-            padding: 12px;
-            border-radius: 10px;
-            border: 1px solid var(--border-subtle);
-            margin-bottom: 15px;
-        }
-
-        .info-item label { font-size: 0.75rem; color: var(--text-muted); display: block; text-transform: uppercase; }
-        .info-item span { font-size: 0.95rem; font-weight: 700; color: #fff; }
-
-        .slot-tracker { margin-bottom: 18px; }
-        .slot-header { display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 6px; }
-        .progress-bar {
-            height: 6px;
-            background: var(--bg-surface-elevated);
-            border-radius: 4px;
-            overflow: hidden;
-            border: 1px solid var(--border-subtle);
-        }
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
-            border-radius: 4px;
-        }
-
-        .card-footer { padding: 0 20px 20px 20px; }
-
-        .btn-action {
-            width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 10px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 800;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-        }
-
-        .btn-join-match {
-            background: var(--accent-red);
-            color: #fff;
-            box-shadow: 0 4px 15px rgba(255, 46, 99, 0.3);
-        }
-
-        .btn-join-match:hover { background: #e01e4f; }
-
-        .btn-view-credentials {
-            background: linear-gradient(135deg, rgba(0, 255, 135, 0.2), rgba(0, 240, 255, 0.2));
-            border: 1px solid var(--accent-green);
-            color: var(--accent-green);
-        }
-
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(6, 8, 12, 0.85);
-            backdrop-filter: blur(10px);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        .modal-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-subtle);
-            padding: 32px;
-            border-radius: 20px;
-            width: 90%;
-            max-width: 440px;
-            text-align: center;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
-        }
-
-        .modal-card h3 { font-family: 'Orbitron', sans-serif; font-size: 1.3rem; color: #fff; margin-bottom: 10px; }
-
-        .modal-input {
-            width: 100%;
-            padding: 12px 16px;
-            margin: 12px 0;
-            background: var(--bg-main);
-            border: 1px solid var(--border-subtle);
-            color: #fff;
-            border-radius: 10px;
-            font-size: 0.95rem;
-            outline: none;
-        }
-
-        .alert-banner {
-            padding: 12px 18px;
-            background: rgba(0, 255, 135, 0.1);
-            border: 1px solid var(--accent-green);
-            color: var(--accent-green);
-            border-radius: 10px;
-            margin-bottom: 25px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+        .btn { width: 100%; padding: 12px; border-radius: 8px; border: none; font-family: 'Orbitron', sans-serif; font-weight: 800; cursor: pointer; transition: 0.3s; letter-spacing: 1px; }
+        .btn-submit { background: #FF2E63; color: #FFF; box-shadow: 0 0 15px rgba(255,46,99,0.3); }
+        .btn-submit:hover { background: #E01E4F; box-shadow: 0 0 25px rgba(255,46,99,0.6); }
+        .btn-disabled { background: #1A1F2C; color: #555; cursor: not-allowed; border: 1px solid rgba(255,255,255,0.05); }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="container nav-wrapper">
-            <a href="{{ url_for('index') }}" class="brand-logo">
-                <i class="fa-solid fa-crosshairs"></i> NIGHT <span>RAID</span>
-            </a>
-            
-            <nav class="nav-links">
-                <a href="{{ url_for('index') }}" class="active">Tournaments</a>
-                <a href="{{ url_for('withdraw') }}">Cash Out</a>
-                <a href="{{ url_for('admin') }}">Admin Portal</a>
-            </nav>
-
-            <div class="header-actions">
-                <div class="wallet-capsule">
-                    <i class="fa-solid fa-coins"></i>
-                    <span>Mana Points</span>
-                </div>
-                <button class="btn-topup btn-open-modal" data-modal="buyModal"><i class="fa-solid fa-bolt"></i> Buy MP</button>
-            </div>
+    <nav class="navbar">
+        <a href="/" class="logo">Night<span>Raid</span></a>
+        <div class="nav-right">
+            <div class="mp-badge">⚡ {{ user_mp }} Mana Points</div>
+            {% if current_user %}
+                <span class="user-pill">🎮 {{ current_user }}</span>
+                <a href="/stats/{{ current_user }}" class="nav-link">My Stats</a>
+                <a href="/logout" class="nav-link" style="color:#FF2E63;">Logout</a>
+            {% endif %}
+            <a href="/withdraw" class="nav-link">Redeem MP</a>
+            <a href="/admin" class="nav-link">Admin Portal</a>
         </div>
-    </header>
+    </nav>
 
     <div class="container">
-
         {% with messages = get_flashed_messages(with_categories=true) %}
-          {% if messages %}
-            {% for cat, msg in messages %}
-              <div class="alert-banner"><i class="fa-solid fa-circle-check"></i> {{ msg }}</div>
-            {% endfor %}
-          {% endif %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash-msg flash-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
         {% endwith %}
 
-        <div class="hero-spotlight">
-            <div class="hero-content">
-                <span class="hero-badge"><i class="fa-solid fa-fire"></i> FEATURED SEASON</span>
-                <h1>Night Raid Pro Series 2026</h1>
-                <p>Compete against top-tier squads, rack up kills, and claim your share of the weekly cash prize pool directly to your account.</p>
-                <button class="btn-topup btn-open-modal" data-modal="buyModal" style="padding: 12px 28px; font-size: 0.85rem;">Get Mana Points ⚡</button>
+        <!-- Gamer Sign-In Bar -->
+        {% if not current_user %}
+        <div class="login-bar">
+            <div>
+                <strong style="font-family:'Orbitron', sans-serif; color:#00F0FF;">PLAYER IDENTITY</strong>
+                <p style="color:#AAA; font-size:0.9rem;">Set your primary In-Game ID (IGN) to track stats & tournaments.</p>
             </div>
+            <form action="/login" method="POST">
+                <input type="text" name="player_name" placeholder="Enter Gamer ID (IGN)" required style="margin:0;">
+                <button type="submit" class="btn btn-submit" style="width: auto; padding: 0 20px;">LOGIN</button>
+            </form>
         </div>
+        {% endif %}
 
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-icon"><i class="fa-solid fa-trophy"></i></div>
-                <div class="stat-info">
-                    <h4>{{ matches|length }}</h4>
-                    <p>Active Matches</p>
-                </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon" style="color: var(--accent-purple); background: rgba(112, 0, 255, 0.1);">
-                    <i class="fa-solid fa-gamepad"></i>
-                </div>
-                <div class="stat-info">
-                    <h4>Multi-Game</h4>
-                    <p>BGMI / Free Fire / CODM</p>
-                </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon" style="color: var(--accent-green); background: rgba(0, 255, 135, 0.1);">
-                    <i class="fa-solid fa-shield-halved"></i>
-                </div>
-                <div class="stat-info">
-                    <h4>Verified</h4>
-                    <p>Instant Room Keys</p>
-                </div>
-            </div>
-        </div>
+        <h2 style="font-family: 'Orbitron', sans-serif; margin-bottom: 25px; font-size: 1.4rem; color: #00F0FF; text-shadow: 0 0 10px rgba(0,240,255,0.3);">ACTIVE TOURNAMENTS</h2>
 
-        <div class="section-header">
-            <div class="section-title">
-                <i class="fa-solid fa-list-check"></i> Competitive Tournaments
-            </div>
-            <div class="filter-pills">
-                <button class="pill active" data-filter="all">All Games</button>
-                <button class="pill" data-filter="BGMI">BGMI</button>
-                <button class="pill" data-filter="Free Fire">Free Fire</button>
-                <button class="pill" data-filter="COD Mobile">COD Mobile</button>
-            </div>
-        </div>
-
-        {% if matches %}
-            <div class="tournament-grid">
-                {% for match in matches %}
-                <div class="tournament-card" data-game="{{ match.game }}">
+        <div class="grid">
+            {% for match in matches %}
+                <div class="card">
                     <div>
-                        <div class="card-banner">
-                            <span class="game-tag">{{ match.game }}</span>
-                            <span class="live-tag">LIVE REGISTRATION</span>
+                        <div class="card-header">
+                            <div class="card-title">{{ match.match_name }}</div>
+                            {% if match.status == 'COMPLETED' %}
+                                <span class="badge badge-ended">CLOSED</span>
+                            {% else %}
+                                <span class="badge badge-upcoming">LIVE REGISTRATION</span>
+                            {% endif %}
                         </div>
-                        <div class="card-body">
-                            <h3>{{ match.match_name }}</h3>
-                            
-                            <div class="info-grid">
-                                <div class="info-item">
-                                    <label>Entry Fee</label>
-                                    <span style="color: var(--accent-gold);">{{ match.fee }} MP</span>
-                                </div>
-                                <div class="info-item">
-                                    <label>1st Prize</label>
-                                    <span style="color: var(--accent-green);">₹{{ match.prize_1st }}</span>
-                                </div>
-                                <div class="info-item" style="grid-column: span 2;">
-                                    <label>Schedule Time</label>
-                                    <span><i class="fa-regular fa-clock"></i> {{ match.match_time }}</span>
-                                </div>
-                            </div>
 
-                            <div class="slot-tracker">
-                                <div class="slot-header">
-                                    <span>Slots Filled</span>
-                                    <span>{{ (match.players or [])|length }} / 100 Players</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: {{ [((match.players or [])|length), 100]|min }}%;"></div>
-                                </div>
-                            </div>
+                        <div class="details">
+                            <div>Game Title: <span>{{ match.game }}</span></div>
+                            <div>Entry Fee: <span>{{ match.fee }} Mana Points (MP)</span></div>
+                            <div>Prize Pool: <span>{{ match.prize_1st }} Mana Points (MP)</span></div>
+                            <div>Schedule: <span>{{ match.match_time }}</span></div>
+                            <div>Deployed Squads: <span>{{ match.players|length }} Players</span></div>
                         </div>
+
+                        {% if match.id in registered_ids and (match.room_id or match.room_pass) %}
+                            <div class="room-box">
+                                <div class="room-title">ACCESS CREDENTIALS</div>
+                                <div>ROOM ID: <strong>{{ match.room_id if match.room_id else 'TBA' }}</strong></div>
+                                <div>PASSWORD: <strong>{{ match.room_pass if match.room_pass else 'TBA' }}</strong></div>
+                            </div>
+                        {% endif %}
                     </div>
 
-                    <div class="card-footer">
-                        {% if match.id in registered_ids %}
-                            <button class="btn-action btn-view-credentials btn-room-modal" 
-                                    data-title="{{ match.match_name }}"
-                                    data-room-id="{{ match.room_id }}"
-                                    data-room-pass="{{ match.room_pass }}">
-                                <i class="fa-solid fa-key"></i> View Room Key
-                            </button>
+                    <div>
+                        {% if match.status == 'COMPLETED' %}
+                            <button class="btn btn-disabled" disabled>MATCH TERMINATED</button>
+                        {% elif match.id in registered_ids %}
+                            <button class="btn btn-disabled" disabled>DEPLOYED</button>
                         {% else %}
-                            <button class="btn-action btn-join-match btn-join-modal" 
-                                    data-id="{{ match.id }}"
-                                    data-title="{{ match.match_name }}"
-                                    data-fee="{{ match.fee }}">
-                                Register Squad
-                            </button>
+                            <form method="POST">
+                                <input type="hidden" name="match_id" value="{{ match.id }}">
+                                <input type="text" name="player_ign" value="{{ current_user if current_user else '' }}" placeholder="Enter In-Game ID (IGN)" required autocomplete="off">
+                                <input type="text" name="custom_note" placeholder="Team Name / Note (Optional)" autocomplete="off">
+                                <button type="submit" class="btn btn-submit">ENTER MATCH</button>
+                            </form>
                         {% endif %}
                     </div>
                 </div>
-                {% endfor %}
-            </div>
-        {% else %}
-            <p style="color: var(--text-muted); text-align: center; padding: 60px 0;">No tournaments scheduled right now. Check back soon!</p>
-        {% endif %}
-
-    </div>
-
-    <!-- BUY MP MODAL -->
-    <div id="buyModal" class="modal-overlay">
-        <div class="modal-card">
-            <h3>Purchase Mana Points</h3>
-            <p style="font-size:0.85rem; color: var(--text-muted); margin-bottom: 15px;">1 MP = ₹1. Instant QR Generation:</p>
-            
-            <input type="number" id="mpAmount" class="modal-input" placeholder="Enter MP Amount (e.g. 100)">
-            
-            <div id="qrContainer" style="margin: 15px 0; display:none;">
-                <img id="qrImage" src="" alt="UPI QR Code" style="border: 2px solid var(--accent-cyan); border-radius: 12px; width: 170px;">
-                <p style="font-size:0.8rem; color: var(--text-muted); margin-top:8px;">Scan with GPay / PhonePe / Paytm</p>
-            </div>
-
-            <button class="btn-topup btn-close-modal" data-modal="buyModal" style="width:100%; padding:12px; margin-top:10px;">Close Window</button>
+            {% else %}
+                <div style="grid-column: 1 / -1; text-align: center; padding: 50px; color: #888; background: #080C14; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05);">
+                    No active tournament lobbies deployed. Stay tuned!
+                </div>
+            {% endfor %}
         </div>
     </div>
 
-    <!-- JOIN MATCH MODAL -->
-    <div id="joinModal" class="modal-overlay">
-        <div class="modal-card">
-            <h3 id="joinTitle">Tournament Entry</h3>
-            <p id="joinFee" style="font-size: 0.9rem; color: var(--accent-gold); font-weight: bold; margin-bottom: 15px;"></p>
-            
-            <form action="{{ url_for('index') }}" method="POST">
-                <input type="hidden" name="match_id" id="joinMatchId">
-                <input type="text" name="player_ign" class="modal-input" placeholder="In-Game Name / Player ID" required>
-                <input type="text" name="custom_note" class="modal-input" placeholder="Custom Squad Note (optional)">
-                <button type="submit" class="btn-action btn-join-match" style="margin-top:10px;">Confirm & Pay MP</button>
-            </form>
-            <button class="btn-close-modal" data-modal="joinModal" style="background:none; border:none; color: var(--text-muted); margin-top:15px; cursor:pointer; font-weight:600;">Cancel</button>
-        </div>
-    </div>
-
-    <!-- ROOM DETAILS MODAL -->
-    <div id="roomModal" class="modal-overlay">
-        <div class="modal-card">
-            <h3 id="roomMatchTitle">Match Credentials</h3>
-            <p style="font-size:0.85rem; color: var(--text-muted); margin-bottom: 18px;">Exclusive room details for verified participants:</p>
-            
-            <div style="background: var(--bg-main); padding:20px; border-radius:12px; border:1px solid var(--border-subtle); text-align:left;">
-                <p style="margin-bottom:10px; font-size: 0.95rem;"><strong>Room ID:</strong> <span id="displayRoomId" style="color:var(--accent-cyan); font-family:monospace; font-size:1.1rem; float:right;">Pending</span></p>
-                <p style="font-size: 0.95rem;"><strong>Password:</strong> <span id="displayRoomPass" style="color:var(--accent-red); font-family:monospace; font-size:1.1rem; float:right;">Pending</span></p>
-            </div>
-
-            <button class="btn-topup btn-close-modal" data-modal="roomModal" style="width:100%; padding:12px; margin-top:20px;">Close Details</button>
-        </div>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            
-            document.querySelectorAll('.btn-open-modal').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const target = this.getAttribute('data-modal');
-                    document.getElementById(target).style.display = 'flex';
-                });
-            });
-
-            document.querySelectorAll('.btn-close-modal').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const target = this.getAttribute('data-modal');
-                    document.getElementById(target).style.display = 'none';
-                });
-            });
-
-            document.querySelectorAll('.btn-join-modal').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const id = this.getAttribute('data-id');
-                    const title = this.getAttribute('data-title');
-                    const fee = this.getAttribute('data-fee');
-                    
-                    document.getElementById('joinMatchId').value = id;
-                    document.getElementById('joinTitle').innerText = title;
-                    document.getElementById('joinFee').innerText = 'Entry Deduction: ' + fee + ' MP';
-                    document.getElementById('joinModal').style.display = 'flex';
-                });
-            });
-
-            document.querySelectorAll('.btn-room-modal').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const title = this.getAttribute('data-title');
-                    const roomId = this.getAttribute('data-room-id');
-                    const roomPass = this.getAttribute('data-room-pass');
-
-                    document.getElementById('roomMatchTitle').innerText = title;
-                    document.getElementById('displayRoomId').innerText = roomId ? roomId : 'Not Released Yet';
-                    document.getElementById('displayRoomPass').innerText = roomPass ? roomPass : 'Not Released Yet';
-                    document.getElementById('roomModal').style.display = 'flex';
-                });
-            });
-
-            const mpInput = document.getElementById('mpAmount');
-            if (mpInput) {
-                mpInput.addEventListener('input', function() {
-                    const amount = this.value;
-                    const qrContainer = document.getElementById('qrContainer');
-                    const qrImage = document.getElementById('qrImage');
-                    
-                    if (amount && amount > 0) {
-                        const upiUrl = `upi://pay?pa=your-upi-id@upi&pn=NightRaidEsports&am=${amount}&cu=INR`;
-                        qrImage.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiUrl)}`;
-                        qrContainer.style.display = 'block';
-                    } else {
-                        qrContainer.style.display = 'none';
-                    }
-                });
-            }
-
-            document.querySelectorAll('.filter-pills .pill').forEach(pill => {
-                pill.addEventListener('click', function() {
-                    document.querySelectorAll('.filter-pills .pill').forEach(p => p.classList.remove('active'));
-                    this.classList.add('active');
-
-                    const filter = this.getAttribute('data-filter');
-                    document.querySelectorAll('.tournament-card').forEach(card => {
-                        if (filter === 'all' || card.getAttribute('data-game') === filter) {
-                            card.style.display = 'flex';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
-                });
-            });
-
-        });
-    </script>
 </body>
 </html>
